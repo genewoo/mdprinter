@@ -10,6 +10,10 @@ module MDprinter
       "#{pre * time}#{str}"
     end
 
+    def indent(str, char, count)
+      (char * count) + str.gsub(/(\n+)/) { $1 + (char * count) }
+    end
+
     def italic str
       surround str, '_'
     end
@@ -18,12 +22,23 @@ module MDprinter
       surround str, '_', 2
     end
 
+    alias em italic
+    alias strong bold
+
     def hr
       '* * *'
     end
 
     def br
       '  '
+    end
+
+    def code str
+      surround str, '`'
+    end
+
+    def code_block str
+      indent str, ' ', 8
     end
 
     def link label, link, text
