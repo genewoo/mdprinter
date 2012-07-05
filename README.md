@@ -23,9 +23,9 @@ I found markdown is pretty good at write API doc with format. I used it a lot fr
     puts MDprinter.code "&nbsp;"
     puts MDprinter.code_block <<CODE
     (1..10).each |i|
-     puts i
+       puts i
     end
-    END
+    CODE
 
 # Advance Usage
 
