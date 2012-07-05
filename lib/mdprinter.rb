@@ -38,7 +38,7 @@ module MDprinter
     end
 
     def code_block str
-      indent str, ' ', 8
+      indent str, ' ', 4
     end
 
     def link label, link, text
