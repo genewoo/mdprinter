@@ -7,9 +7,9 @@ Gem::Specification.new do |s|
   s.version     = Mdprinter::VERSION
   s.authors     = ["Gene Wu"]
   s.email       = ["gene_wu@hotmail.com"]
-  s.homepage    = "http://www.genewu.com"
+  s.homepage    = "http://genewoo.github.com/mdprinter"
   s.summary     = %q{Programtic output in markdown syntax}
-  s.description = %q{}
+  s.description = %q{Programtic output in markdown syntax}
 
   s.rubyforge_project = "mdprinter"
 
