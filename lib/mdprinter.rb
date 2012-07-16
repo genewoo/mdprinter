@@ -51,17 +51,18 @@ module MDprinter
 
     def method_missing(meth, *args, &blk)
       method_name = meth.to_s # to compatible with ruby 1.8
+      method_name_array = method_name.scan(/./) #still for ruby 1.8
       if (method_name =~ /h[1-4]/)
-        return surround(surround(args[0], ' '), '#', method_name[1].to_i)
+        return surround(surround(args[0], ' '), '#', method_name_array[1].to_i)
       end
       if (method_name =~ /b[1-9]/)
-        return prefix(prefix(args[0], '> '), '> ', method_name[1].to_i - 1)
+        return prefix(prefix(args[0], '> '), '> ', method_name_array[1].to_i - 1)
       end
       if (method_name =~ /l[1-9]/)
-        return prefix(prefix(args[0], '*  '), '   ', method_name[1].to_i - 1)
+        return prefix(prefix(args[0], '*  '), '   ', method_name_array[1].to_i - 1)
       end
       if (method_name =~ /n[1-9]/)
-        return prefix(prefix(args[0], '1. '), '   ', method_name[1].to_i - 1)
+        return prefix(prefix(args[0], '1. '), '   ', method_name_array[1].to_i - 1)
       end
     end
 
