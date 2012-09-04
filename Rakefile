@@ -1,11 +1,13 @@
 require "bundler/gem_tasks"
 require "rake/testtask"
 require './lib/mdprinter'
-require 'pry'
+#require 'pry'
 
-task :default do
-    puts "abc"
-end
+#task :default do
+#    puts "abc"
+#end
+
+task :default => [:test]
 
 task :selfdoc do
   puts MDprinter.h1 "mdprinter"

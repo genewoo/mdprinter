@@ -1,4 +1,6 @@
 require "mdprinter/version"
+#require 'rubygems'
+#require 'pry'
 
 module MDprinter
   class << self
@@ -49,11 +51,20 @@ module MDprinter
       prefix link(label, link, text), "!"
     end
 
+    def global_indent
+      @global_indent
+    end
+
+    def global_indent=(indent)
+      @global_indent = indent
+    end
+
     def method_missing(meth, *args, &blk)
       method_name = meth.to_s # to compatible with ruby 1.8
       method_name_array = method_name.scan(/./) #still for ruby 1.8
       if (method_name =~ /h[1-4]/)
-        return surround(surround(args[0], ' '), '#', method_name_array[1].to_i)
+        global_indent = 0 unless global_indent
+        return surround(surround(args[0], ' '), '#', method_name_array[1].to_i + self.global_indent)
       end
       if (method_name =~ /b[1-9]/)
         return prefix(prefix(args[0], '> '), '> ', method_name_array[1].to_i - 1)

@@ -27,6 +27,7 @@ class MdPrinterTest < Test::Unit::TestCase
   end
 
   def test_h
+    MDprinter.global_indent = 0
     assert_equal MDprinter.h1("a"), "# a #"
     assert_equal MDprinter.h2("a"), "## a ##"
     assert_equal MDprinter.h3("a"), "### a ###"
@@ -51,6 +52,11 @@ class MdPrinterTest < Test::Unit::TestCase
 
   def test_img
     assert_equal "![label](link) \"text\"", MDprinter.img('label', 'link', 'text')
+  end
+
+  def test_global_indent
+    MDprinter.global_indent = 1
+    assert_equal MDprinter.h1("a"), "## a ##"
   end
 
 #  def test_cannot_call_private
