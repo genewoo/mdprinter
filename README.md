@@ -29,4 +29,13 @@ I found markdown is pretty good at write API doc with format. I used it a lot fr
 
 # Advance Usage
 
+## Global Indent on Header
+
+If you had already written a program which use mdprinter to print out a document, and try to combine mutliple output together as single document, than you might meet problem with initial indent. The old program is using __H1__ for each section head, which is not a good idea for a bigger document. So you need another global indent to make all the out put of your code increase indent by a number. Here came a choice, you can use __MDprinter.global_indent__.
+
+    MDprinter.global_indent = 1
+    MDprinter.h1 "abc" # it will return "## abc ##" instead of "# abc #"
+
+
+
 TBD
