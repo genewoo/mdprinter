@@ -63,7 +63,7 @@ module MDprinter
       method_name = meth.to_s # to compatible with ruby 1.8
       method_name_array = method_name.scan(/./) #still for ruby 1.8
       if (method_name =~ /h[1-4]/)
-        global_indent = 0 unless global_indent
+        self.global_indent = 0 unless self.global_indent
         return surround(surround(args[0], ' '), '#', method_name_array[1].to_i + self.global_indent)
       end
       if (method_name =~ /b[1-9]/)
